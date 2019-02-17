@@ -1,0 +1,31 @@
+dynamic-db: 
+  products:
+  - new
+  - new2
+  expire-after: 30
+server:
+  tomcat:
+    max-connections: 100
+spring: 
+  datasource: 
+    tomcat:
+      max-idle: 2
+      min-idle: 1
+      initial-size: 1
+  jpa:
+    hibernate: 
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+flyway:
+  url: jdbc:mysql://localhost:3306
+  schemas:
+  - default_dynamic
+  enabled: false
+  user: test
+  password: test
+logging: 
+  level:
+    root: WARN
+    org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy: DEBUG
